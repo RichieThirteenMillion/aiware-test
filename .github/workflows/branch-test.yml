@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
       - name: test 1
         env:
-          TARGET: ${{ github.event.inputs.targetEnv }}
-        run: echo "dollar github ref is ($GITHUB_REF) and target environment is $TARGET"
+          TARGETENV: ${{ github.event.inputs.targetEnv }}
+        run: echo "dollar github ref is ($GITHUB_REF) and target environment is $TARGETENV"
       - run: git fetch --no-tags --prune --depth=5 origin ${{ github.ref }}
       
