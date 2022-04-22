@@ -1,0 +1,15 @@
+$sidebarwidth: 220;
+
+:export {
+  // stylelint-disable
+  sidebarwidth: $sidebarwidth;
+  // stylelint-enable
+}
+
+.container {
+  width: #{$sidebarwidth}px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  background: white;
+}
