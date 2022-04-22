@@ -1,5 +1,15 @@
 name: Test Release
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+    inputs:
+      targetEnv:
+        description: 'Target environment'     
+        required: true
+        default: 'dev' 
+        type: choice
+        options:
+        - dev
+        - stage
 jobs:
   trythis:
     runs-on: self-hosted
@@ -8,5 +18,8 @@ jobs:
         with:
           fetch-depth: 0
       - name: test 1
-        run: echo "dollar github ref is ($GITHUB_REF)"
+        env:
+          TARGET: ${{ github.event.inputs.targetEnv }}
+        run: echo "dollar github ref is ($GITHUB_REF) and target environment is $TARGET"
       - run: git fetch --no-tags --prune --depth=5 origin ${{ github.ref }}
+      
