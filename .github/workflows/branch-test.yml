@@ -1,0 +1,12 @@
+name: Test Release
+on: [workflow_dispatch]
+jobs:
+  trythis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: test 1
+        run: echo "dollar github ref is ($GITHUB_REF)"
+      - run: git fetch --no-tags --prune --depth=5 origin ${{ github.ref }}
